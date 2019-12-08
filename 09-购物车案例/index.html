@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.min.js"></script>
+    <style>
+        .cart-item {
+            line-height: 50px;
+            width: 1000px;
+            margin: 10px auto;
+            position: relative;
+            background-color: pink;
+        }
+        
+        .cart-item a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .item-price {
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        
+        .num-box {
+            position: absolute;
+            left: 200px;
+            top: 0;
+            margin-top: 10px;
+            line-height: 20px;
+        }
+        
+        .min-total {
+            position: absolute;
+            top: 0;
+            left: 500px;
+        }
+        
+        .cart-item>a {
+            position: absolute;
+            right: 50px;
+            top: 0;
+        }
+        
+        .checkAll {
+            margin-left: 200px;
+        }
+        
+        .num-box input {
+            width: 20px;
+            text-align: center;
+            float: left;
+            height: 20px;
+            border: 0;
+        }
+        
+        .num-box a {
+            border: 1px solid #eee;
+            height: 20px;
+            float: left;
+            width: 20px;
+            text-align: center;
+        }
+        
+        em {
+            font-style: normal;
+        }
+        
+        .total-num {
+            margin-left: 400px;
+        }
+        
+        .total-money {
+            margin-left: 100px;
+        }
+        
+        .delete-check {
+            margin-left: 100px;
+        }
+        
+        .bg {
+            background-color: cornflowerblue;
+        }
+    </style>
+    <script>
+        $(function() {
+
+            //判断全选按钮
+            $(".checkAll").change(function() {
+                //  $(this).prop("checked");
+                $(".j-check, .checkAll").prop("checked", $(this).prop("checked"));
+                if ($(this).prop("checked")) {
+                    $(".cart-item").addClass("bg");
+                } else {
+                    $(".cart-item").removeClass("bg");
+                }
+            });
+            $(".j-check").change(function() {
+                if ($(".j-check:checked").length === $(".j-check").length) {
+                    $(".checkAll").prop("checked", true);
+                } else {
+                    $(".checkAll").prop("checked", false);
+                }
+                if ($(this).prop("checked")) {
+                    $(this).parent().addClass("bg");
+                } else {
+                    $(this).parent().removeClass("bg");
+                }
+            });
+            $(".decrement").click(function() {
+                var n = $(this).siblings("input").val();
+                n--;
+                if (n <= 0) {
+                    return false;
+                }
+                $(this).siblings("input").val(n);
+                var price = $(this).parent().siblings(".item-price").text().substr(1);
+                $(this).parent().siblings(".min-total").text('￥' + (n * price).toFixed(2));
+                totalNum();
+                totalMoney();
+            });
+            $(".increment").click(function() {
+                var n = $(this).siblings("input").val();
+                n++;
+                $(this).siblings("input").val(n);
+                var price = $(this).parent().siblings(".item-price").text().substr(1);
+                $(this).parent().siblings(".min-total").text('￥' + (n * price).toFixed(2));
+                totalNum();
+                totalMoney();
+            });
+            $(".num-box input").change(function() {
+                var n = $(this).val();
+                var price = $(this).parent().siblings(".item-price").text().substr(1);
+                $(this).parent().siblings(".min-total").text('￥' + (n * price).toFixed(2));
+                totalNum();
+                totalMoney();
+            });
+            var sum = 0;
+            totalNum();
+
+
+            function totalNum() {
+                $(".num-box input").each(function(i, ele) { //获取所有的个数的input元素,对元素进行遍历,获取表单中的值
+                    sum += parseInt($(ele).val());
+                })
+                $(".total-num em").text(sum);
+                sum = 0;
+            }
+            var money = 0;
+            totalMoney();
+
+            function totalMoney() {
+                $(".min-total").each(function(i, ele) {
+                    var pirce = parseFloat($(ele).text().substr(1));
+                    money += pirce;
+                })
+                $(".total-money em").text('￥' + money.toFixed(2));
+                money = 0;
+            }
+            $(".del").click(function() {
+                $(this).parents(".cart-item").remove();
+                totalNum();
+                totalMoney();
+            });
+            $(".delete-check").click(function() {
+                $(".j-check:checked").parent().remove();
+                totalNum();
+                totalMoney();
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <input type="checkbox" name="" id="" class="checkAll">全选
+    <div class="cart-item">
+        <input type="checkbox" name="" id="" class="j-check" />
+        <div class="item-price">￥12.50</div>
+        <div class="num-box">
+            <a href="javascript:;" class="decrement">-</a>
+            <input type="text" name="" id="" value="1" />
+            <a href=" javascript:; " class="increment ">+</a>
+        </div>
+        <div class="min-total ">￥12.50</div>
+        <a href="javascript:;" class="del">删除</a>
+    </div>
+    <div class="cart-item">
+        <input type="checkbox" name="" id="" class="j-check" />
+        <div class="item-price">￥12.50</div>
+        <div class="num-box">
+            <a href="javascript:;" class="decrement">-</a>
+            <input type="text" name="" id="" value="1" />
+            <a href=" javascript:; " class="increment ">+</a>
+        </div>
+        <div class="min-total ">￥12.50</div>
+        <a href="javascript:;" class="del">删除</a>
+    </div>
+    <div class="cart-item">
+        <input type="checkbox" name="" id="" class="j-check" />
+        <div class="item-price">￥12.50</div>
+        <div class="num-box">
+            <a href="javascript:;" class="decrement">-</a>
+            <input type="text" name="" id="" value="1" />
+            <a href="javascript:;" class="increment ">+</a>
+        </div>
+        <div class="min-total ">￥12.50</div>
+        <a href="javascript:;" class="del">删除</a>
+    </div>
+    <div class="cart-item">
+        <input type="checkbox" name="" id="" class="j-check" />
+        <div class="item-price">￥12.50</div>
+        <div class="num-box">
+            <a href="javascript:;" class="decrement">-</a>
+            <input type="text" name="" id="" value="1" />
+            <a href="javascript:;" class="increment ">+</a>
+        </div>
+        <div class="min-total ">￥12.50</div>
+        <a href="javascript:;" class="del">删除</a>
+    </div>
+    <input type="checkbox" name="" id="" class="checkAll">全选
+    <span class="delete-check">删除已选中</span>
+    <span class="total-num">共计<em>1</em>商品</span>
+    <span class="total-money">共计金额<em>￥100.00</em></span>
+</body>
+
+</html>

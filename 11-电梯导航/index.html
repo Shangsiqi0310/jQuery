@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.min.js"></script>
+    <style>
+        body {
+            height: 2000px;
+        }
+        
+        .outer {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            height: 100px;
+            background-color: pink;
+        }
+        
+        .banner {
+            height: 400px;
+            background-color: skyblue;
+            margin-top: 10px;
+        }
+        
+        .nav {
+            height: 500px;
+            background-color: pink;
+            margin-top: 10px;
+        }
+        
+        .main {
+            height: 300px;
+            background-color: skyblue;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            height: 200px;
+            background-color: pink;
+            margin-top: 10px;
+        }
+        
+        .silder {
+            width: 80px;
+            height: 200px;
+            background-color: pink;
+            position: fixed;
+            left: 0;
+            bottom: 50px;
+            display: none;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .silder li {
+            line-height: 50px;
+            text-align: center;
+            cursor: default;
+        }
+        
+        .current {
+            background-color: red;
+        }
+    </style>
+    <script>
+        $(function() {
+            var h = $(".banner").offset().top;
+            fixed();
+            var flag = true;
+
+            function fixed() {
+                if ($(document).scrollTop() >= h) {
+                    $(".silder").fadeIn();
+                } else {
+                    $(".silder").fadeOut();
+                }
+            }
+            $(window).scroll(function() {
+                fixed();
+                if (flag) {
+                    $(".content").children().each(function(i, ele) {
+
+                        if ($(document).scrollTop() >= $(ele).offset().top) {
+
+                            $(".silder li").eq(i).addClass("current").siblings().removeClass("current");
+                        }
+                    })
+                }
+            });
+            $(".silder li").click(function() {
+
+                flag = false;
+                var index = $(this).index();
+                var h = $(".content").children().eq(index).offset().top;
+                console.log(h);
+
+                $("html,body").stop().animate({
+                    scrollTop: h
+                }, function() {
+                    flag = true;
+                });
+                $(this).addClass("current").siblings().removeClass("current");
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="header">header</div>
+        <div class="content">
+            <div class="banner">banner</div>
+            <div class="nav">nav</div>
+            <div class="main">main</div>
+            <div class="footer">footer</div>
+        </div>
+    </div>
+    <div class="silder">
+        <ul>
+            <li>banner</li>
+            <li>nav</li>
+            <li>main</li>
+            <li>footer</li>
+        </ul>
+    </div>
+</body>
+
+</html>

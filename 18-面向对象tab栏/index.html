@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/index.js"></script>
+    <style>
+        .outer {
+            width: 600px;
+            height: 300px;
+            border: 1px solid pink;
+            margin: 30px auto;
+        }
+        
+        ul {
+            list-style: none;
+            overflow: hidden;
+        }
+        
+        ul,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul li {
+            float: left;
+            line-height: 30px;
+            height: 40px;
+            width: 80px;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-top li span {
+            display: block;
+            line-height: 30px;
+            margin: 5px 10px;
+            width: 60px;
+            text-align: center;
+        }
+        
+        .tab-top span input {
+            width: 58px;
+        }
+        
+        .tab-top em {
+            font-style: normal;
+            position: absolute;
+            top: 7px;
+            right: 17px;
+        }
+        
+        .tab-top {
+            position: relative;
+            display: flex;
+        }
+        
+        .top-r span {
+            position: absolute;
+            border: 1px solid #eee;
+            top: 14px;
+            line-height: 12px;
+            right: 10px;
+        }
+        
+        h4 {
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .tab-bottom .show {
+            display: block;
+        }
+        
+        .tab-bottom section {
+            display: none;
+            padding: 5px;
+        }
+        
+        .tab-top .current-top {
+            border-bottom: none;
+        }
+        
+        .tab-top p {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 0% 0 50% 50%;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .top-r {
+            border-bottom: 1px solid #eee;
+            height: 40px;
+            flex: 1;
+        }
+        
+        .tab-bottom input {
+            width: 500px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>js面向对象 动态添加标签页</h4>
+    <div class="outer">
+
+        <nav class="tab-top">
+            <ul>
+                <li class="current-top">
+                    <span>新闻一</span>
+                    <p><em>X</em></p>
+                </li>
+                <li>
+                    <span>新闻二</span>
+                    <p><em>X</em></p>
+                </li>
+                <li>
+                    <span>新闻三</span>
+                    <p><em>X</em></p>
+                </li>
+            </ul>
+            <div class="top-r">
+                <span>+</span>
+            </div>
+        </nav>
+        <div class="tab-bottom">
+            <section class="show">新闻一内容</section>
+            <section>新闻二内容</section>
+            <section>新闻三内容</section>
+        </div>
+    </div>
+</body>
+
+</html>

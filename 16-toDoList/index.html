@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/style.css" />
+    <script src="../jquery.min.js"></script>
+    <script src="js/index.js"></script>
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?ncxgnk');
+            src: url('fonts/icomoon.eot?ncxgnk#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?ncxgnk') format('truetype'), url('fonts/icomoon.woff?ncxgnk') format('woff'), url('fonts/icomoon.svg?ncxgnk#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+        
+        body {
+            margin: 0;
+            background-color: #ddd;
+        }
+        
+        .top {
+            line-height: 50px;
+            background-color: black;
+        }
+        
+        .top span {
+            color: #fff;
+            margin-left: 300px;
+        }
+        
+        .top input {
+            border-radius: 5px;
+            outline: none;
+            border: 0;
+            width: 300px;
+            line-height: 20px;
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, .5) inset;
+            margin-left: 150px;
+            padding-left: 6px;
+        }
+        
+        .box {
+            width: 680px;
+            margin: 10px auto;
+        }
+        
+        p,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul li {
+            list-style: none;
+            display: flex;
+        }
+        
+        .box li {
+            font-size: 12px;
+            background-color: #fff;
+            width: 530px;
+            line-height: 25px;
+            height: 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 5px;
+        }
+        
+        .box li::before {
+            content: "";
+            display: inline-block;
+            height: 25px;
+            width: 3px;
+            background: #1DB181;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        #do {
+            position: absolute;
+            height: 14px;
+            width: 14px;
+            margin: 5px 10px;
+            ;
+        }
+        
+        .inner {
+            margin-left: 30px;
+            color: #555;
+        }
+        
+        ul p {
+            font-family: 'icomoon';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 25px;
+            line-height: 25px;
+            text-align: center;
+        }
+        
+        ul span {
+            flex: 1;
+        }
+        
+        .finished li {
+            opacity: .4;
+        }
+        
+        .box span[class^="dot-"] {
+            display: inline-block;
+            width: 15px;
+            line-height: 15px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            right: 10px;
+            top: 0;
+            font-size: 12px;
+            font-weight: 400;
+            color: #999;
+            text-align: center;
+        }
+        
+        .box h3 {
+            width: 530px;
+            position: relative;
+        }
+        
+        .inner input {
+            border: 0;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <span>ToDoList</span>
+        <input type="text" placeholder="toDo" />
+    </div>
+    <div class="box">
+        <div class="doing">
+            <h3>正在进行<span class="dot-d">0</span></h3>
+            <ul>
+                <!-- <li>
+
+                    <input type="checkbox" name="" id="do" />
+                    <span class="inner">今天要做的事</span>
+                    <p></p>
+                </li> -->
+            </ul>
+        </div>
+        <div class="finished">
+            <h3>已经完成<span class="dot-f">0</span></h3>
+            <ul>
+                <!-- <li>
+
+                    <input type="checkbox" name="" id="do" />
+                    <span class="inner">今天要做的事</span>
+                    <p></p>
+                </li> -->
+            </ul>
+        </div>
+        <footer></footer>
+    </div>
+
+</body>
+
+</html>

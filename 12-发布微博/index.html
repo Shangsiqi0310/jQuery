@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.min.js"></script>
+    <style>
+        .outer {
+            width: 500px;
+            margin: 100px auto;
+            border: 1px solid #999;
+        }
+        
+        .inner {
+            display: block;
+            height: 200px;
+            width: 400px;
+            margin: 8px auto;
+            border: 1px solid #999;
+        }
+        
+        button {
+            margin-left: 400px;
+        }
+        
+        .mark {
+            width: 400px;
+            margin: 4px auto;
+            padding: 0;
+        }
+        
+        .mark li {
+            border: 1px solid #999;
+            list-style: none;
+            font-size: 12px;
+            position: relative;
+            margin-bottom: 5px;
+            display: none;
+        }
+        
+        .mark li a {
+            position: absolute;
+            right: 5px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+    <script>
+        $(function() {
+            $("button").on("click", function() {
+                var li = $("<li></li>");
+                var content = $(".inner").val();
+                li.html(content + '<a href="javascript:;">删除</a>');
+                $(".mark").prepend(li);
+                li.slideDown();
+                $(".inner").val("");
+            });
+            $(".mark").on("click", "a", function() {
+                $(this).parent().slideUp(function() {
+                    $(this).remove();
+                });
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="outer">
+        <textarea class="inner"></textarea>
+        <button>发布</button>
+        <ul class="mark"></ul>
+    </div>
+</body>
+
+</html>

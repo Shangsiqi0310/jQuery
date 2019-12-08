@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js//jquery.min.js"></script>
+    <script>
+        $(function() {
+            $(".nav>li").mouseover(function() {
+                $(this).children("ul").slideDown(200);
+            });
+            $(".nav>li").mouseout(function() {
+                $(this).children("ul").slideUp(200);
+            })
+        })
+    </script>
+    <style>
+        .nav {
+            list-style: none;
+            width: 500px;
+            margin: 100px auto;
+        }
+        
+        .nav>li {
+            display: inline-block;
+            margin: 25px;
+            position: relative;
+        }
+        
+        .nav>li a {
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #eee;
+        }
+        
+        .nav>li ul {
+            list-style: none;
+            padding: 0;
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 0;
+        }
+        
+        .nav>li ul li {
+            width: 38px;
+            line-height: 20px;
+            border: 1px solid pink;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">标题1</a>
+            <ul>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">标题2</a>
+            <ul>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">标题3</a>
+            <ul>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">标题4</a>
+            <ul>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">标题5</a>
+            <ul>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html> 

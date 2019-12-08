@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/jquery.fullPage.css" rel="stylesheet" />
+
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+    <script src="js/animate.js"></script>
+
+
+    <script>
+        $(function() {
+            var flag = false;
+            var search = document.querySelector(".search");
+            $('#dowebok').fullpage({
+                sectionsColor: ['#f6f3ea', '#fff', '#7BAABE', '#87B0DC', 'pink', 'skyblue', 'yellow', 'red'],
+                navigation: true,
+                afterLoad: function(anchorLink, index) { //回调函数,当屏幕滚动后调用
+                    if (index == 2 && flag == false) { //只有第一次滚动到当前页的时候才做动画,做完所有的动画把flag变为true
+                        search.style.display = 'block';
+                        $(search).animate({
+                            left: 350,
+                        }, 1000, function() {
+                            $(search).children().eq(1).animate({
+                                opacity: 1,
+                            }, 1000, function() {
+                                $(search).hide();
+                                $(".search-s").show().animate({
+                                    top: 60,
+                                    left: 550,
+                                    width: 120,
+                                    height: 25
+                                }, 1000, );
+                                $(".fafafa").show().animate({
+                                    width: 450,
+                                    height: 240
+                                }, 1000, function() {
+                                    flag = true;
+                                });
+                                $(".baby0").hide();
+                                $(".baby1").fadeIn(1000); //fadeIn是渐入,fadeOut是渐出
+                            })
+                        })
+
+                    }
+                },
+                onLeave: function(index, nextIndex, direction) { //滚轮滚动就触发,index离开的页面序号,滚动到的页面序号,index从1计算
+                    if (index == 2 && nextIndex == 3 && flag == true) {
+                        $(".top-minfa").show().siblings(".cover").show();
+                        $(".top-minfa").animate({
+                            "bottom": -338,
+                            "left": 55
+                        }, 2000);
+
+                    }
+                    if (index == 3 && nextIndex == 4) {
+                        $(".top-minfa").hide();
+                        $(".lie").show().animate({
+                            "bottom": -320,
+                            "left": 300
+                        }, 2000, function() {
+                            $(".lie").hide();
+                            $(".c-sofa").show();
+                            $(".car").animate({
+                                "left": 1500
+                            })
+                        });
+                    }
+                },
+
+
+            })
+
+        });
+    </script>
+    <link href="css/index.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="fix">
+        <img src="images/timg1.jpg" />
+    </div>
+    <div id="dowebok">
+        <div class="section">
+            <img src="images/f49ba354336f6ab10978d582394ec2a5.jpg" class="boat" />
+            <img src="images/timg2.jpg" class="house" />
+            <img src="images/timg 3.jpg" class="boll" />
+        </div>
+        <div class="section">
+            <p class="baby baby0">琳琅满目的宝贝,让你如见初恋</p>
+            <p class="baby baby1">琳琅满目的宝贝,让你如见初恋</p>
+            <div class="second-inner">
+                <div class="search">
+                    <img src="images/a8951a0da690217329dd2436ebac73fc.gif" />
+                    <span>沙发</span>
+                </div>
+                <div class="  search-s">
+                    <img src="images/a8951a0da690217329dd2436ebac73fc.gif" />
+                    <span>沙发</span>
+
+                </div>
+                <img src="images/0b624ee81530931891931a14434fda89.jpg" class="fafafa" />
+                <div class="cover"></div>
+                <img src="images/sofa_03.png" class="min-fa top-minfa" />
+
+            </div>
+        </div>
+        <div class="section section3">
+            <div class="display">
+                <div class="display-table">
+                    <img src="images/sofa_03.png" class="min-fa " />
+                    <img src="images/images/so_03.png" class="lie" />
+                </div>
+            </div>
+        </div>
+        <div class="section section4">
+            <img src="images/images/cloud_02.png" class="cloud" />
+            <div class="car">
+                <img src="images/806f99d1ed817b776e36739dd9ed933e.jpg" class="cart" />
+                <img src="images/images/so_03.png" class="c-sofa" />
+            </div>
+        </div>
+        <div class=" section ">
+            第五屏
+        </div>
+        <div class="section ">
+            第六屏
+        </div>
+        <div class="section ">
+            第七屏
+        </div>
+        <div class="section ">
+            第八屏
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

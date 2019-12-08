@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function() {
+            $(".box div").eq(0).show();
+            $("ul li").mouseover(function() {
+                $(this).css("background-color", "skyblue").siblings().css("background-color", "");
+                var index = $(this).index();
+                $(".box div").eq(index).show().siblings().hide();
+            });
+
+        })
+    </script>
+    <style>
+        ul {
+            width: 50px;
+            list-style: none;
+            margin: 100px 400px;
+            padding: 0;
+        }
+        
+        ul li {
+            background-color: pink;
+            margin: 10px 0;
+            width: 50px;
+            text-align: center;
+            cursor: default;
+        }
+        
+        .box {
+            position: absolute;
+            top: 100px;
+            left: 470px;
+            border: 1px solid #eee;
+            width: 200px;
+            height: 235px;
+        }
+        
+        .box div {
+            width: 200px;
+            line-height: 235px;
+            display: none;
+            text-align: center;
+        }
+        
+        .current {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>商品1</li>
+        <li>商品2</li>
+        <li>商品3</li>
+        <li>商品4</li>
+        <li>商品5</li>
+        <li>商品6</li>
+        <li>商品7</li>
+        <li>商品8</li>
+    </ul>
+    <div class="box">
+        <div>图1</div>
+        <div>图2</div>
+        <div>图3</div>
+        <div>图4</div>
+        <div>图5</div>
+        <div>图6</div>
+        <div>图7</div>
+        <div>图8</div>
+    </div>
+</body>
+
+</html>

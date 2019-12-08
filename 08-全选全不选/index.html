@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function() {
+            $("ul .checkAll").change(function() {
+                var check = $(this).prop("checked");
+                $(".j_check,.checkAll").prop("checked", check);
+
+            });
+            $(".j_check").change(function() {
+                if ($(".j_check:checked").length === $(".j_check").length) {
+                    $("ul .checkAll").prop("checked", true);
+                } else {
+                    $("ul .checkAll").prop("checked", false);
+                }
+            });
+        })
+    </script>
+    <style>
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>全选:<input type="checkbox" class="checkAll"></li>
+        <li><input type="checkbox" class="j_check">商品</li>
+        <li><input type="checkbox" class="j_check">商品</li>
+        <li><input type="checkbox" class="j_check">商品</li>
+        <li><input type="checkbox" class="j_check">商品</li>
+        <li>全选:<input type="checkbox" class="checkAll"></li>
+    </ul>
+</body>
+
+</html>
